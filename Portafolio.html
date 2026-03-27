@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sebastian Vargas Parra | Portafolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700&display=swap" rel="stylesheet"/>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --bg-primary: #0F0F0F;
+      --bg-secondary: #1A1A1A;
+      --bg-card: #222222;
+      --accent: #00D4FF;
+      --text-primary: #FFFFFF;
+      --text-secondary: #A0A0A0;
+      --font: 'Heebo', sans-serif;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: var(--bg-primary);
+      color: var(--text-primary);
+      font-family: var(--font);
+      font-size: 16px;
+      line-height: 1.6;
+    }
+
+    
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background-color: var(--bg-secondary);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 60px;
+      height: 65px;
+      z-index: 1000;
+      border-bottom: 0.5px solid #2a2a2a;
+    }
+
+    .nav-logo {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 40px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--text-primary);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 400;
+      transition: color 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: var(--accent);
+    }
+
+    /* ===== HERO ===== */
+    #inicio {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 100px 20px 60px;
+      border-bottom: 0.5px solid #1f1f1f;
+    }
+
+    .hero-foto {
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      background-color: var(--bg-secondary);
+      border: 2px solid var(--accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 30px;
+      font-size: 13px;
+      color: var(--text-secondary);
+    }
+
+    .hero-nombre {
+      font-size: 42px;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .hero-cargo {
+      font-size: 18px;
+      color: var(--accent);
+      margin-bottom: 14px;
+      font-weight: 400;
+    }
+
+    .hero-descripcion {
+      font-size: 15px;
+      color: var(--text-secondary);
+      max-width: 500px;
+    }
+
+    /* ===== SECCIONES ===== */
+    section {
+      padding: 80px 60px;
+      border-bottom: 0.5px solid #1f1f1f;
+    }
+
+    .seccion-titulo {
+      font-size: 28px;
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 50px;
+    }
+
+    .seccion-titulo span {
+      color: var(--accent);
+    }
+
+    /* ===== HABILIDADES ===== */
+    .habilidades-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .habilidad-card {
+      background-color: var(--bg-secondary);
+      border: 0.5px solid #2a2a2a;
+      border-radius: 10px;
+      padding: 30px 20px;
+      text-align: center;
+      transition: border-color 0.3s, transform 0.3s;
+    }
+
+    .habilidad-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-4px);
+    }
+
+    .habilidad-icono {
+      width: 50px;
+      height: 50px;
+      background-color: rgba(0, 212, 255, 0.1);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 16px;
+      font-size: 22px;
+    }
+
+    .habilidad-nombre {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--text-primary);
+    }
+
+    /* ===== PROYECTOS ===== */
+    .proyectos-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 30px;
+      max-width: 960px;
+      margin: 0 auto;
+    }
+
+    .proyecto-card {
+      background-color: var(--bg-secondary);
+      border: 0.5px solid #2a2a2a;
+      border-radius: 10px;
+      overflow: hidden;
+      transition: border-color 0.3s, transform 0.3s;
+    }
+
+    .proyecto-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-4px);
+    }
+
+    .proyecto-imagen {
+      width: 100%;
+      height: 180px;
+      background-color: var(--bg-card);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-secondary);
+      font-size: 13px;
+    }
+
+    .proyecto-info {
+      padding: 20px;
+    }
+
+    .proyecto-titulo {
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .proyecto-descripcion {
+      font-size: 13px;
+      color: var(--text-secondary);
+      margin-bottom: 16px;
+      line-height: 1.6;
+    }
+
+    .proyecto-tecnologias {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 16px;
+    }
+
+    .tag {
+      background-color: rgba(0, 212, 255, 0.1);
+      border: 0.5px solid var(--accent);
+      color: var(--accent);
+      font-size: 11px;
+      padding: 4px 10px;
+      border-radius: 20px;
+    }
+
+    .proyecto-btn {
+      display: inline-block;
+      padding: 8px 20px;
+      border: 0.5px solid var(--accent);
+      color: var(--accent);
+      text-decoration: none;
+      border-radius: 6px;
+      font-size: 13px;
+      font-family: var(--font);
+      background: transparent;
+      cursor: pointer;
+      transition: background 0.3s, color 0.3s;
+    }
+
+    .proyecto-btn:hover {
+      background-color: var(--accent);
+      color: #0F0F0F;
+    }
+
+    
+    .contacto-form {
+      max-width: 560px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .contacto-form input,
+    .contacto-form textarea {
+      background-color: var(--bg-secondary);
+      border: 0.5px solid #2a2a2a;
+      border-radius: 8px;
+      padding: 14px 16px;
+      color: var(--text-primary);
+      font-family: var(--font);
+      font-size: 14px;
+      outline: none;
+      transition: border-color 0.3s;
+    }
+
+    .contacto-form input::placeholder,
+    .contacto-form textarea::placeholder {
+      color: var(--text-secondary);
+    }
+
+    .contacto-form input:focus,
+    .contacto-form textarea:focus {
+      border-color: var(--accent);
+    }
+
+    .contacto-form textarea {
+      height: 140px;
+      resize: none;
+    }
+
+    .btn-enviar {
+      background-color: var(--accent);
+      color: #0F0F0F;
+      border: none;
+      padding: 14px;
+      border-radius: 8px;
+      font-size: 15px;
+      font-weight: 700;
+      font-family: var(--font);
+      cursor: pointer;
+      transition: opacity 0.3s;
+    }
+
+    .btn-enviar:hover {
+      opacity: 0.85;
+    }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background-color: var(--bg-secondary);
+      text-align: center;
+      padding: 24px;
+      font-size: 13px;
+      color: var(--text-secondary);
+    }
+
+    footer span {
+      color: var(--accent);
+    }
+  </style>
+</head>
+<body>
+
+  
+  <nav>
+    <a href="#inicio" class="nav-logo">Sebastian Vargas</a>
+    <ul class="nav-links">
+      <li><a href="#inicio">Inicio</a></li>
+      <li><a href="#habilidades">Habilidades</a></li>
+      <li><a href="#proyectos">Proyectos</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+    </ul>
+  </nav>
+
+ 
+  <section id="inicio">
+    <div class="hero-foto">Foto</div>
+    <h1 class="hero-nombre">Sebastian Vargas Parra</h1>
+    <p class="hero-cargo">Estudiante de Desarrollo de Software</p>
+    <p class="hero-descripcion">Apasionado por la tecnología, el desarrollo web y la programación. Actualmente cursando 3er semestre en Uniminuto.</p>
+  </section>
+
+  
+  <section id="habilidades">
+    <h2 class="seccion-titulo">Mis <span>Habilidades</span></h2>
+    <div class="habilidades-grid">
+      <div class="habilidad-card">
+        <div class="habilidad-icono">🐍</div>
+        <p class="habilidad-nombre">Python</p>
+      </div>
+      <div class="habilidad-card">
+        <div class="habilidad-icono">⚡</div>
+        <p class="habilidad-nombre">MicroPython</p>
+      </div>
+      <div class="habilidad-card">
+        <div class="habilidad-icono">🗄️</div>
+        <p class="habilidad-nombre">Bases de Datos</p>
+      </div>
+      <div class="habilidad-card">
+        <div class="habilidad-icono">🌐</div>
+        <p class="habilidad-nombre">Programación Web</p>
+      </div>
+    </div>
+  </section>
+
+  
+  <section id="proyectos">
+    <h2 class="seccion-titulo">Mis <span>Proyectos</span></h2>
+    <div class="proyectos-grid">
+
+      <div class="proyecto-card">
+        <div class="proyecto-imagen">Imagen del proyecto</div>
+        <div class="proyecto-info">
+          <h3 class="proyecto-titulo">IA en MicroPython</h3>
+          <p class="proyecto-descripcion">Proyecto de inteligencia artificial desarrollado con MicroPython, aplicando conceptos de programación embebida y automatización.</p>
+          <div class="proyecto-tecnologias">
+            <span class="tag">MicroPython</span>
+            <span class="tag">IA</span>
+            <span class="tag">Hardware</span>
+          </div>
+          <a href="#" class="proyecto-btn">Ver proyecto</a>
+        </div>
+      </div>
+
+      <div class="proyecto-card">
+        <div class="proyecto-imagen">Imagen del proyecto</div>
+        <div class="proyecto-info">
+          <h3 class="proyecto-titulo">Base de Datos de Estudiantes</h3>
+          <p class="proyecto-descripcion">Sistema de gestión de estudiantes desarrollado en Python, permitiendo registrar, consultar y administrar información académica.</p>
+          <div class="proyecto-tecnologias">
+            <span class="tag">Python</span>
+            <span class="tag">Bases de Datos</span>
+            <span class="tag">CRUD</span>
+          </div>
+          <a href="#" class="proyecto-btn">Ver proyecto</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CONTACTO -->
+  <section id="contacto">
+    <h2 class="seccion-titulo">Ponte en <span>Contacto</span></h2>
+    <div class="contacto-form">
+      <input type="text" placeholder="Tu nombre" />
+      <input type="email" placeholder="Tu correo electrónico" />
+      <textarea placeholder="Tu mensaje"></textarea>
+      <button class="btn-enviar">Enviar mensaje</button>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2025 <span>Sebastian Vargas Parra</span> — Todos los derechos reservados</p>
+  </footer>
+
+</body>
+</html>
